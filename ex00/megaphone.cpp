@@ -14,37 +14,37 @@
 #include <string>
 #include <cctype>
 
-void make_upper(char **str){
-	
-	int i = 0;
+std::string to_uppercase(const std::string &input) {
 
-	while((*str)[i])
+	std::string result;
+	result.reserve(input.length());
+
+	std::size_t i = 0;
+	while(i < input.length())
 	{
-		if ((*str)[i] >= 'a' || (*str)[i] <= 'z')
-			(*str)[i] -= 32;
-		i++;
+		result += static_cast<char>(std::toupper(static_cast<unsigned char>(input[i])));
+		++i;
 	}
+	return result;
 };
 
-
-// int main(int argc, char** argv)
-// {
-// 	int i;
+int main(int argc, char** argv) {
+ 	int i;
 	
-// 	i = 0;
-// 	if (argc < 2)
-// 	{
-// 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-// 	}
-// 	else 
-// 	{
-// 		i = 1;
-// 		while(argv[i]){
-// 			make_upper(&argv[i]);
-// 			std::cout << argv[i];
-// 			i++;
-// 		}
-// 		std::cout << "\n";
-// 	}	
-// 	return 0;
-// }
+ 	i = 0;
+ 	if (argc < 2)
+ 	{
+ 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
+ 	}
+ 	else 
+ 	{
+ 		i = 1;
+ 		while(argv[i]){
+ 			
+ 			std::cout << to_uppercase(argv[i]);
+ 			++i;
+ 		}
+ 		std::cout << std::endl;
+	}	
+	return 0;
+}
