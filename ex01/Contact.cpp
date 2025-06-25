@@ -1,6 +1,6 @@
 
-#include "Contact.hpp"
-#include <iostream>
+#include "header.hpp"
+
 
 Contact::Contact() {
     // Default constructor initializes an empty contact
@@ -8,20 +8,24 @@ Contact::Contact() {
     lastName = "";
     nickName = "";
     phoneNumber = "";
-    darkestSecret = "";
-    std::cout<< "Contact created." << std::endl;
+    secret = "";
+    //std::cout<< "Contact created." << std::endl;
+}
+
+Contact::~Contact()
+{
 }
 
 void Contact::setContact(const std::string &firstName,
                          const std::string &lastName,
                          const std::string &nickName,
                          const std::string &phoneNumber,
-                         const std::string &darkestSecret) {
+                         const std::string &secret) {
     this->firstName = firstName;
     this->lastName = lastName;
     this->nickName = nickName;
     this->phoneNumber = phoneNumber;
-    this->darkestSecret = darkestSecret;
+    this->secret = secret;
 }
 
 
@@ -33,16 +37,26 @@ std::string Contact::getLastName() const {
     return lastName;
 }
 
-std::string Contact::getNickname() const {
+std::string Contact::getNickName() const {
     return nickName;
 }
 
+std::string Contact::getPhoneNumber()  const {
+    return phoneNumber;
+}
+
+std::string Contact::getSecret() const 
+{
+    return secret;
+}
+
+
 void Contact::displayContact() const {
-    std::cout << "First Name: " << firstName << std::endl;
-    std::cout << "Last Name: " << lastName << std::endl;
-    std::cout << "Nickname: " << nickName << std::endl;
-    std::cout << "Phone Number: " << phoneNumber << std::endl;
-    std::cout << "Darkest Secret: " << darkestSecret << std::endl;
+    std::cout << GREEN <<"First Name: " << RESET << firstName  << std::endl;
+    std::cout << GREEN << "Last Name: " << RESET << lastName <<std::endl;
+    std::cout << GREEN <<"Nickname: " << RESET << nickName <<std::endl;
+    std::cout << GREEN <<"Phone Number: " << RESET << phoneNumber <<std::endl;
+    std::cout << GREEN <<"Secret: " << RESET << secret <<std::endl;
 }
 
 bool Contact::isEmpty() const {
