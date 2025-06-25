@@ -18,7 +18,7 @@ class Contact{
         //Getters and setters
         void setContact(const std::string &firstName,
                         const std::string &lastName,
-                        const std::string &nickname,
+                        const std::string &nickName,
                         const std::string &phoneNumber,
                         const std::string &secret);
         std::string getFirstName() const;

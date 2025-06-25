@@ -9,17 +9,20 @@ class PhoneBook {
         Contact contacts[8];
         int contactCount;
         int _index;
-
-        /* void displayTableHeader() const;
-        void displayContactPreview(int index) const;
-        std::string formatField(const std::string &str) const; */
+        void storeContact(const std::string &firstName,
+                        const std::string &lastName,
+                        const std::string &nickName,
+                        const std::string &phoneNumber,
+                        const std::string &secret);
+        void promptandShowDetails() const;
 
     public:
         PhoneBook();
         ~PhoneBook();
-
         void addContact();
         void searchContacts() const;
+        void displayContacts() const;
+        
 };
 
 #endif

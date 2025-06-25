@@ -18,6 +18,17 @@ static std::string truncate(const std::string &str)
     return str;
 }
 
+void PhoneBook::storeContact(const std::string& firstName, const std::string& lastName,
+                             const std::string& nickName, const std::string& phoneNumber,
+                             const std::string& secret) {
+{
+    contacts[_index].setContact(firstName,lastName,nickName, phoneNumber,secret);
+    _index = (_index +1) % 8;
+    if (contactCount < 8)
+        contactCount ++;
+}
+}
+
 void PhoneBook::addContact()
 {
     std::string firstName, lastName,nickName,phoneNumber, secret;
@@ -39,20 +50,12 @@ void PhoneBook::addContact()
         return;
         }
     
-    this -> contacts[_index].setContact(firstName,lastName,nickName, phoneNumber,secret);
-    this ->_index = (this->_index +1) % 8;
-    if (this -> contactCount < 8)
-        this->contactCount ++;
-
+    storeContact(firstName, lastName, nickName, phoneNumber, secret);
     std::cout << YELLOW << "Contact added" << RESET << std::endl;
 }
 
-void PhoneBook::searchContacts() const {
-    if (this-> contactCount == 0)
-    {
-        std::cout << RED << "No Contacts to display!"<< RESET << std::endl;
-        return;
-    }
+void PhoneBook :: displayContacts() const {
+
     std::cout << std::setw(10) << "Index"<<  "|"
             << std::setw(10) << "First Name"<< "|"
             << std::setw(10) << "Last Name"<< "|"
@@ -64,7 +67,9 @@ void PhoneBook::searchContacts() const {
                   << std::setw(10) << truncate(this->contacts[i].getLastName()) << "|"
                   << std::setw(10) << truncate(this->contacts[i].getNickName()) << std::endl;
     }
+}
 
+void PhoneBook :: promptandShowDetails() const {
 
     std::cout << BLUE << "Enter index to view details: " << RESET;
     std::string input;
@@ -78,6 +83,17 @@ void PhoneBook::searchContacts() const {
 
     this->contacts[index].displayContact();
 
+}
+
+void PhoneBook::searchContacts() const {
+    if (this-> contactCount == 0)
+    {
+        std::cout << RED << "No Contacts to display!"<< RESET << std::endl;
+        return;
+    }
+    
+    displayContacts();
+    promptandShowDetails();
 }
 
 
