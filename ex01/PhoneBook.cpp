@@ -1,6 +1,5 @@
 #include "header.hpp"
 
-
 PhoneBook::PhoneBook()
 {
     this -> contactCount = 0;
