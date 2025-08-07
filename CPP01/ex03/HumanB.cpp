@@ -8,7 +8,7 @@ void HumanB::setWeapon(Weapon& newWeapon){
 
 void HumanB::attack() const{
     if (weapon)
-        std::cout << name << " attacks with their " << weapon->getType() << std::endl;
+        std::cout << GREEN << name << RESET " attacks with their " << weapon->getType() << std::endl;
     else 
-        std::cout << name << " has no weapon to attack with." << std::endl;
+        std::cout << GREEN << name << RESET << RED << " has no weapon to attack with." << RESET << std::endl;
 }

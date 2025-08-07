@@ -1,17 +1,12 @@
 #include <iostream>
-#include <iomanip>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-#include <sstream>
 #include "Weapon.hpp"
-#include "HumanA.hpp"
 #include "HumanB.hpp"
+#include "HumanA.hpp"
 
 #ifndef COLORS_HPP
 #define COLORS_HPP
 
-#define BOLD    "\033[1m"
+#define BOLD        "\033[1m"
 #define BLACK  "\033[1;30m"
 #define RED    "\033[1;31m"
 #define GREEN  "\033[1;32m"
@@ -20,7 +15,6 @@
 #define MAGENTA "\033[1;35m"
 #define CYAN   "\033[1;36m"
 #define WHITE  "\033[1;37m"
-#define RESET   "\033[0m"
-
+#define RESET       "\033[0m"
 
 #endif

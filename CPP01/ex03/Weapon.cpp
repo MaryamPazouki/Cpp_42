@@ -1,4 +1,4 @@
-#include "Weapon.hpp"
+#include "header.hpp"
 
 Weapon::Weapon(const std::string& type) : type(type) {}
 
