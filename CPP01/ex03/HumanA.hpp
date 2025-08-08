@@ -1,7 +1,8 @@
 #ifndef HUMANA_HH
 #define HUMANA_HH
-
 #include <string>
+
+//#include"header.hpp"
 
 class Weapon; // Forward declaration
 

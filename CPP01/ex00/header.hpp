@@ -20,7 +20,7 @@
 #define WHITE  "\033[1;37m"
 #define RESET       "\033[0m"
 
-Zombie* newZombie(std::string name);
-void randomChump(std::string name);
+Zombie* newZombie(const std::string& name);
+void randomChump(const std::string name);
 
 #endif
