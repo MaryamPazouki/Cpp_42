@@ -23,6 +23,28 @@ class Fixed{
 
         int getRawBits(void) const;
         void setRawBits(int const raw);
+
+        bool operator>(const Fixed &other) const;
+        bool operator<(const Fixed &other) const;
+        bool operator>=(const Fixed &other)  const;
+        bool operator<=(const Fixed &other) const;
+        bool operator==(const Fixed &other) const;
+        bool operator!=(const Fixed &other) const;
+
+        Fixed operator+(const Fixed &other) const;
+        Fixed operator-(const Fixed &other) const;
+        Fixed operator*(const Fixed &other) const;
+        Fixed operator/(const Fixed &other) const;
+
+        Fixed &operator++(void); //preincrement ++a
+        Fixed operator++(int); //post increment a++
+        Fixed &operator--(void);
+        Fixed operator--(int);
+
+        static Fixed& min(Fixed &n, Fixed &m);
+        static const Fixed& min(const Fixed &n, const Fixed &m);
+        static Fixed& max(Fixed &n, Fixed &m);
+        static const Fixed& max(const Fixed &n, const Fixed &m);
 };
 
 std::ostream& operator<<(std::ostream &out, const Fixed &fixed);

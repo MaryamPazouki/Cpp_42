@@ -28,11 +28,94 @@ Fixed :: Fixed (const Fixed& other) : _value(other.getRawBits()){
 
 Fixed& Fixed:: operator = (const Fixed& other){
     std::cout << "Copy assignment operator called" << std::endl;
-    if (this != &other)
+    if (this != &other) // avoid self assignment
         this -> _value = other.getRawBits();
     else 
         std::cout << "overwritting!" << std::endl;
     return *this;
+}
+
+bool Fixed::operator > (const Fixed &other) const{
+    return this-> _value > other.getRawBits();
+}
+
+bool Fixed::operator < (const Fixed &other) const{
+    return this->_value < other.getRawBits();
+}
+
+bool Fixed::operator >= (const Fixed &other) const{
+    return this->_value >= other.getRawBits();
+}
+
+bool Fixed::operator<= (const Fixed &other) const{
+    return this -> _value <= other.getRawBits();
+}
+
+bool Fixed::operator== (const Fixed &other) const{
+    return this -> _value == other.getRawBits();
+}
+
+bool Fixed::operator != (const Fixed &other) const{
+    return this -> _value != other.getRawBits();
+}
+
+Fixed Fixed::operator+(const Fixed &other) const {
+    return Fixed(this->toFloat() + other.toFloat());
+}
+
+Fixed Fixed::operator-(const Fixed &other) const{
+    return Fixed(this->toFloat() - other.toFloat());
+}
+
+Fixed Fixed::operator*(const Fixed &other) const {
+    return Fixed(this->toFloat() * other.toFloat());
+}
+
+Fixed Fixed::operator/(const Fixed &other) const{
+    if (other.toFloat() == 0)
+        throw std::runtime_error("Division by zero");
+    return Fixed(this->toFloat() / other.toFloat());
+}
+
+Fixed& Fixed::operator++(){
+    this->_value ++;
+    return *this; // is obj itself
+}
+
+Fixed Fixed::operator++(int ){
+    Fixed temp(*this);
+    this->_value++;
+    return temp;
+}
+
+Fixed &Fixed::operator--(){
+    this->_value --;
+    return *this;
+}
+
+Fixed Fixed::operator--(int){
+    Fixed temp = (*this);
+    this->_value--;
+    return temp;
+}
+
+/*Modifying the reference modifies the original object
+Const version ensures safety with read-only objects*/
+
+Fixed& Fixed::min(Fixed &n, Fixed &m){
+    return (m > n) ? n : m;
+}
+
+const Fixed& Fixed::min(const Fixed &n, const Fixed &m){
+    return (m > n) ? n : m;
+}
+
+Fixed& Fixed::max(Fixed &n, Fixed &m){
+    return (m < n) ? n : m;
+}
+
+const Fixed& Fixed::max(const Fixed &n, const Fixed &m){
+    return (m < n) ? n : m;
 }
 
 std::ostream& operator <<(std::ostream &out, const Fixed &fixed){
