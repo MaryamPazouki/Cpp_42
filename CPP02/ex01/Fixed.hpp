@@ -11,7 +11,7 @@ class Fixed{
         static const int _fractionalBites = 8; 
     public:
         Fixed();                                // Default Constructor
-        Fixed(const Fixed& other);              //copy construcor
+        Fixed(const Fixed& other);              // copy construcor
         Fixed &operator=(const Fixed &other);   // Copy assign operator
         ~Fixed();                               // Destructor
 
