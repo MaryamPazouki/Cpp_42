@@ -1,26 +1,36 @@
 #include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
-
+//#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main() {
-    // Create a ClapTrap
-    ClapTrap ct1("Jack");
-    ScavTrap st1("scavlet");
+    std::cout << "=== ClapTrap Test ===" << std::endl;
+    ClapTrap ct("Jack");
+    ct.attack("Dummy");
+    ct.takeDamage(5);
+    ct.beRepaired(3);
 
-     // Try attacking when destroyed
-    //ct1.attack("TargetDummy");
-    st1.attack("TargetDummy");
-    st1.guardGate();
+    /* std::cout << "\n=== ScavTrap Test ===" << std::endl;
+    ScavTrap st("Scavy");
+    st.attack("Dummy");
+    st.guardGate(); */
+
+    std::cout << "\n=== FragTrap Test ===" << std::endl;
+    FragTrap ft("Fraggy");
+    ft.attack("Dummy");
+    ft.highFivesGuys();
 
     // Copy constructor test
-    ScavTrap st2 = st1;
+    std::cout << "\n=== Copy Constructor Test (FragTrap) ===" << std::endl;
+    FragTrap ft2 = ft;
 
     // Assignment operator test
-    ScavTrap st3("AnotherOne");
-    st3 = st1;
+    std::cout << "\n=== Assignment Operator Test (FragTrap) ===" << std::endl;
+    FragTrap ft3("AnotherFrag");
+    ft3 = ft;
 
     return 0;
 }
+
 
 
 /* attack() → consumes energy, prints damage dealt.

@@ -3,21 +3,33 @@
 
 
 int main() {
-    // Create a ClapTrap
-    ClapTrap ct1("Jack");
-    ScavTrap st1("scavlet");
+   std::cout << "=== ClapTrap Test ===" << std::endl;
+    ClapTrap ct("Jack");
+    ct.attack("Dummy");
+    ct.takeDamage(5);
+    ct.beRepaired(3);
 
-     // Try attacking when destroyed
-    //ct1.attack("TargetDummy");
-    st1.attack("TargetDummy");
+   std::cout << "=== ScavTrap Test ===" << std::endl;
+
+    // Create a ScavTrap
+    ScavTrap st1("Scavy");
+
+    // Attack a target
+    st1.attack("Training Dummy");
+
+    // Take damage and repair
+    st1.takeDamage(30);
+    st1.beRepaired(15);
+
+    // Activate special ability
     st1.guardGate();
 
-    // Copy constructor test
-    ScavTrap st2 = st1;
+    std::cout << "\n=== Copy Constructor Test (ScavTrap) ===" << std::endl;
+    ScavTrap st2 = st1;  // invokes copy constructor
 
-    // Assignment operator test
-    ScavTrap st3("AnotherOne");
-    st3 = st1;
+    std::cout << "\n=== Assignment Operator Test (ScavTrap) ===" << std::endl;
+    ScavTrap st3("AnotherScav");
+    st3 = st1;           // invokes assignment operator
 
     return 0;
 }
