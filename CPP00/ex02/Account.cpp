@@ -1,3 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Account.cpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mpazouki <mpazouki@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/01 20:44:55 by mpazouki          #+#    #+#             */
+/*   Updated: 2025/09/01 21:13:09 by mpazouki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #include <iostream>
 #include <ctime>
 #include "Account.hpp"
@@ -20,8 +33,6 @@ Account::Account(int initial_deposit)
              <<";amount" << _amount
              <<";created" <<std::endl;
 }
-
-
 
 
 void Account::_displayTimestamp(void)
