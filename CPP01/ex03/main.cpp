@@ -1,33 +1,38 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mpazouki <mpazouki@student.42.fr>          #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025-09-02 10:37:58 by mpazouki          #+#    #+#             */
+/*   Updated: 2025-09-02 10:37:58 by mpazouki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 //#include "Weapon.hpp"
 //#include "HumanA.hpp"
 #include "header.hpp"
 
-int main()
- {
-    
-    {    Weapon club = Weapon("crude spiked club");
-        //Weapon club = Weapon(" ");
-        HumanB jim("Jim");
-        jim.setWeapon(club);
-        //jim.attack();
-        //jim.setWeapon(club);
-        club.setType("some other type of jim");
-        jim.attack();
-
+int main(){
+    {
+        Weapon club = Weapon("crude spiked club");
         HumanA bob("Bob", club);
-        
         bob.attack();
-       // club.setType("some other type of bob");
+        club.setType("some other type of club");
         bob.attack();
-
-    
-        club.getType();
-        std::cout << club.getType()<< std::endl;
-
     }
 
+    {
+        Weapon club = Weapon("crude spiked club");
+        
+        HumanB jim("Jim");
+       //jim.attack();
+        jim.setWeapon(club);
+        jim.attack();
+        club.setType("some other type of club");
+        jim.attack();
+    }
 
-  
-        return 0;
 }
+
