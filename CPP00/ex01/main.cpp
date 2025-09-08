@@ -6,18 +6,27 @@
 /*   By: mpazouki <mpazouki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 20:44:03 by mpazouki          #+#    #+#             */
-/*   Updated: 2025/09/01 20:44:07 by mpazouki         ###   ########.fr       */
+/*   Updated: 2025/09/04 10:06:16 by mpazouki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.hpp"
+#include <csignal>
+
+void handle_signint(int){
+    std::cout << RED << "\nExiting PhoneBook. Goodbye!" << RESET << std::endl;
+    std::exit(0);
+}
 
 int main() {
+    
     PhoneBook phoneBook;
     std::string command;
 
     std::cout << MAGENTA <<"Welcome to the PhoneBook!" << RESET << std::endl;
 
+    std::signal(SIGINT, handle_signint);
+    
     while (true) {
         std::cout << BLUE << "Enter command (ADD, SEARCH, EXIT): " << RESET;
         std::getline(std::cin, command);

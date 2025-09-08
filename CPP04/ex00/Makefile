@@ -1,31 +1,40 @@
-NAME = animal
+# Source Files
+SRCS = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp \
 
+# Source Files Prefix
+SRCS := $(addprefix src/, $(SRCS))
+# Include Folder
+INCLUDES = "./inc"
+
+# Objects Files
+OBJS = $(SRCS:.cpp=.o)
+
+# Name Of The Compiled Program
+NAME = $(shell basename $(CURDIR))
+
+# Compilation Program
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+# Compilation Flags
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -I$(INCLUDES)
 
-SRCS = 	main.cpp\
-		Animal.cpp \
-		Dog.cpp \
-		Cat.cpp 
+# Remove Files Command
+RM = rm -f
 
-OBJS = ${SRCS:.cpp=.o}
-
-CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
+	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
 
-%.o: %.cpp
+debug: CXXFLAGS += -g -fsanitize=address
+debug: fclean $(NAME)
+
+%.o: %.c
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
+	$(RM) $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
-
-.PHONY: all clean fclean re
