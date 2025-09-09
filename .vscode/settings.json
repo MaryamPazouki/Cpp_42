@@ -45,7 +45,8 @@
         "stdexcept": "cpp",
         "streambuf": "cpp",
         "cinttypes": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "csignal": "cpp"
     },
     "42header.email": "mpazouki@student.42.fr",
     "42header.username": "mpazouki"

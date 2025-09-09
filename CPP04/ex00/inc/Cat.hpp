@@ -4,18 +4,14 @@
 
 
 class Cat : public Animal{
-    private:
-        std::string type;
+    
     public:
         Cat();
         Cat(const Cat &other);
         Cat& operator = (const Cat& other);
         ~Cat();
-}
 
+        void makeSound()const; //override
+};
 
-
-
-
-
-#endif;
+#endif

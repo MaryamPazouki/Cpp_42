@@ -1,40 +1,53 @@
-# Source Files
-SRCS = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp \
+# **************************************************************************** #
+#                                Makefile                                      #
+# **************************************************************************** #
 
-# Source Files Prefix
-SRCS := $(addprefix src/, $(SRCS))
-# Include Folder
-INCLUDES = "./inc"
+NAME        = animals
 
-# Objects Files
-OBJS = $(SRCS:.cpp=.o)
+CXX         = c++
+CXXFLAGS    = -Wall -Wextra -Werror -std=c++98 -Iinc -g
 
-# Name Of The Compiled Program
-NAME = $(shell basename $(CURDIR))
+SRC_DIR     = src
+OBJ_DIR     = obj
 
-# Compilation Program
-CXX = c++
-# Compilation Flags
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -I$(INCLUDES)
+SRC         = main.cpp \
+              Animal.cpp \
+              Dog.cpp \
+              Cat.cpp \
+              WrongAnimal.cpp \
+              WrongCat.cpp
 
-# Remove Files Command
-RM = rm -f
+SRCS        = $(addprefix $(SRC_DIR)/, $(SRC))
+OBJS        = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 
+# Colors
+GREEN       = \033[0;32m
+YELLOW      = \033[0;33m
+RED         = \033[0;31m
+NC          = \033[0m
+
+# Rules
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
+	@$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
+	@echo "$(GREEN)✔ Build successful: $(NAME)$(NC)"
 
-debug: CXXFLAGS += -g -fsanitize=address
-debug: fclean $(NAME)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
+	@$(CXX) $(CXXFLAGS) -c $< -o $@
+	@echo "$(YELLOW)Compiled $< $(NC)"
 
-%.o: %.c
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
 
 clean:
-	$(RM) $(OBJS)
+	@rm -rf $(OBJ_DIR)
+	@echo "$(RED)✖ Object files removed$(NC)"
 
 fclean: clean
-	$(RM) $(NAME)
+	@rm -f $(NAME)
+	@echo "$(RED)✖ Executable removed$(NC)"
 
 re: fclean all
+
+.PHONY: all clean fclean re
