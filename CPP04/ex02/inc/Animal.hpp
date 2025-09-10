@@ -16,7 +16,8 @@ class Animal{
         
         const std::string& getType(void) const;
         
-        virtual void makeSound() const;
+        // pure virtual function = Abstract class
+        virtual void makeSound() const = 0; 
         
 };
 
