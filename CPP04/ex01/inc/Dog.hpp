@@ -26,6 +26,9 @@ class Dog : public Animal{
         ~Dog();
         
         void makeSound()const; //override
+
+        // This is what I meant by getBrain():
+        Brain* getBrain() const { return brain; }
 };
 
 #endif

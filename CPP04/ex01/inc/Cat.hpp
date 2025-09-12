@@ -26,6 +26,9 @@ class Cat : public Animal{
         ~Cat();
 
         void makeSound()const; //override
+
+        // 
+        Brain* getBrain() const { return brain; }
 };
 
 #endif
