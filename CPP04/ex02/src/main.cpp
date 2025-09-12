@@ -4,7 +4,7 @@
 
 int main()
 {
-    // Animal a is not allowed anymore
+    // Animal a  : is not allowed anymore, Animal is an abstract class
     Animal *a = new Dog();
     Animal *b = new Cat();
 
