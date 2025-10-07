@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpazouki <mpazouki@student.42.fr>          #+#  +:+       +#+        */
+/*   By: mpazouki <mpazouki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-09-02 12:18:35 by mpazouki          #+#    #+#             */
-/*   Updated: 2025-09-02 12:18:35 by mpazouki         ###   ########.fr       */
+/*   Created: 2025/09/02 12:18:35 by mpazouki          #+#    #+#             */
+/*   Updated: 2025/10/06 08:32:32 by mpazouki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,12 @@ Fixed Fixed::operator/(const Fixed &other) const{
         throw std::runtime_error("Division by zero");
     return Fixed(this->toFloat() / other.toFloat());
 }
-
+//preincrement ++a
 Fixed& Fixed::operator++(){
     this->_value ++;
     return *this; // is obj itself
 }
-
+//post increment a++
 Fixed Fixed::operator++(int ){
     Fixed temp(*this);
     this->_value++;
