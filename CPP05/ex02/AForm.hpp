@@ -7,7 +7,7 @@
 
 class Bureaucrat; // forward declaration
 
-class Form
+class AForm
 {
     private:
         const std::string _name;
@@ -17,13 +17,17 @@ class Form
 
 
     public:
-        Form(std::string const &name, int gradeToSign, int gradeToExecute);
-        Form(const Form &other);
-        Form& operator=(const Form &other);
-        ~Form();
+        AForm(std::string const &name, int gradeToSign, int gradeToExecute);
+        AForm(const AForm &other);
+        AForm& operator=(const AForm &other);
+        virtual ~AForm();
 
 
         void beSigned(const Bureaucrat &b);
+        void execute(Bureaucrat const & executor) const; // checks, then call executeAction()
+
+        // the action each concrete form implements
+        virtual void executeAction() const = 0;
 
         //Exceptions
         class GradeTooHighException : public std::exception {
@@ -35,6 +39,10 @@ class Form
             public:
                 const char* what() const throw();
         };
+        class FormNotSignedException : public std::exception {
+            public:
+                const char* what() const throw();
+        };
            
         //getter functions
 
@@ -43,6 +51,6 @@ class Form
         int getGradeToSign() const;
         int getGradeToExecute() const;
 };
-std::ostream & operator<<(std::ostream &out, const Form &f);
+std::ostream & operator<<(std::ostream &out, const AForm &f);
 
 #endif
