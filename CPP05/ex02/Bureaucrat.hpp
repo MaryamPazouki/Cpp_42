@@ -1,4 +1,16 @@
-# ifndef BUREAUCRAT_HPP
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mpazouki <mpazouki@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/05 12:03:14 by mpazouki          #+#    #+#             */
+/*   Updated: 2025/11/05 12:03:20 by mpazouki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
 #include<iostream>
@@ -25,7 +37,7 @@ class Bureaucrat{
         void decrementGrade();
 
         //void signAForm();
-        void signAForm(AForm &f);
+        void signForm(AForm &f);
 
         void executeForm(AForm const & form) const;
         

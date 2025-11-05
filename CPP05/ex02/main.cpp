@@ -1,9 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mpazouki <mpazouki@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/05 12:03:35 by mpazouki          #+#    #+#             */
+/*   Updated: 2025/11/05 12:03:36 by mpazouki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include <cstdlib>
 #include <ctime>
+
+/* int main() {
+    try {
+        Bureaucrat alice("Alice", 1); // super high rank
+        ShrubberyCreationForm form("home");
+
+        alice.signForm(form);      // Alice signs the form
+        alice.executeForm(form);   // Alice executes the form (creates a file)
+    }
+    catch (std::exception & e) {
+        std::cerr << e.what() << std::endl;
+    }
+} */
 
 int main() {
     std::srand(std::time(NULL)); // seed rand once
@@ -30,6 +55,7 @@ int main() {
     high.executeForm(pres);  // pardoned
 
     // demonstration of insufficient grade
+    low.signForm(shrub);
     low.executeForm(shrub); // couldn't execute because grade too low (or form not signed)
     return 0;
 }

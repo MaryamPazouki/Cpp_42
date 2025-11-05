@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpazouki <mpazouki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/05 12:03:08 by mpazouki          #+#    #+#             */
-/*   Updated: 2025/11/05 12:03:09 by mpazouki         ###   ########.fr       */
+/*   Created: 2025/11/05 12:05:37 by mpazouki          #+#    #+#             */
+/*   Updated: 2025/11/05 12:05:38 by mpazouki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,17 @@ void Bureaucrat::executeForm(AForm const & form) const {
     }
 }
 
+void Bureaucrat::signForm(AForm &f){
+   try{
+      f.beSigned(*this);
+      std::cout << _name << " signed " << f.getName() << std::endl;
+   }
+   catch(std::exception &e){
+      std::cout << _name << " couldn't sign " << f.getName()
+                  << " because " << e.what() << std::endl;
+   }
+ }
+
 // Exception messages
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
    return "Grade too high!";
@@ -93,13 +104,3 @@ std::ostream & operator<<(std::ostream & out, const Bureaucrat & b) {
    return this->_grade;
  }
 
-void Bureaucrat::signForm(AForm &f){
-   try{
-      f.beSigned(*this);
-      std::cout << _name << " signed " << f.getName() << std::endl;
-   }
-   catch(std::exception &e){
-      std::cout << _name << " couldn't sign " << f.getName()
-                  << " because " << e.what() << std::endl;
-   }
- }

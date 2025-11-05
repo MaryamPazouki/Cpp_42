@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpazouki <mpazouki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/05 12:01:01 by mpazouki          #+#    #+#             */
-/*   Updated: 2025/11/05 12:01:02 by mpazouki         ###   ########.fr       */
+/*   Created: 2025/11/05 12:05:43 by mpazouki          #+#    #+#             */
+/*   Updated: 2025/11/05 12:05:44 by mpazouki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include<iostream>
 #include<string>
 
-class Form;
+class AForm;
 
 class Bureaucrat{
     private:
@@ -36,8 +36,10 @@ class Bureaucrat{
         void incrementGrade();
         void decrementGrade();
 
-        //void signForm();
-        void signForm(Form &f);
+        //void signAForm();
+        void signForm(AForm &f);
+
+        void executeForm(AForm const & form) const;
         
         // Exceptions
         class GradeTooHighException : public std::exception {

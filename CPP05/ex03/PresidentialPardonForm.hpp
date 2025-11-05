@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpazouki <mpazouki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/05 12:03:41 by mpazouki          #+#    #+#             */
-/*   Updated: 2025/11/05 12:03:42 by mpazouki         ###   ########.fr       */
+/*   Created: 2025/11/05 12:06:09 by mpazouki          #+#    #+#             */
+/*   Updated: 2025/11/05 12:06:10 by mpazouki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PresidentialPardonForm.hpp"
-#include <iostream>
+#ifndef PRESIDENTIALPARDONFORM_HPP
+#define PRESIDENTIALPARDONFORM_HPP
 
-PresidentialPardonForm::PresidentialPardonForm(std::string const & target)
-  : AForm("PresidentialPardonForm", 25, 5), _target(target) {}
+#include "AForm.hpp"
+#include <string>
 
-PresidentialPardonForm::~PresidentialPardonForm() {}
+class PresidentialPardonForm : public AForm {
+private:
+    std::string _target;
+public:
+    PresidentialPardonForm(std::string const & target);
+    virtual ~PresidentialPardonForm();
+    virtual void executeAction() const;
+};
 
-void PresidentialPardonForm::executeAction() const {
-    std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
-}
+#endif
