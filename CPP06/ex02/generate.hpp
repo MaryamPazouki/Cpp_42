@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   generate.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpazouki <mpazouki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/17 09:14:18 by mpazouki          #+#    #+#             */
-/*   Updated: 2025/11/17 09:14:19 by mpazouki         ###   ########.fr       */
+/*   Created: 2025/11/17 13:54:01 by mpazouki          #+#    #+#             */
+/*   Updated: 2025/11/17 13:54:10 by mpazouki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#ifndef GENERATE_HPP
+#define GENERATE_HPP
 
-int main(int argc, char **argv){
-    if (argc !=2)
-    {
-        std::cout<<  "Usage: ./convert <literal>" << std::endl;
-        return 1;
-    }
-    ScalarConverter::convert(argv[1]);
-    return 0;
-}
+#include "Base.hpp"
+
+Base* generate();
+
+#endif

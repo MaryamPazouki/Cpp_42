@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   identity.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpazouki <mpazouki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/17 09:14:18 by mpazouki          #+#    #+#             */
-/*   Updated: 2025/11/17 09:14:19 by mpazouki         ###   ########.fr       */
+/*   Created: 2025/11/17 11:36:54 by mpazouki          #+#    #+#             */
+/*   Updated: 2025/11/18 12:42:51 by mpazouki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#ifndef IDENTITY_HPP
+#define IDENTITY_HPP
 
-int main(int argc, char **argv){
-    if (argc !=2)
-    {
-        std::cout<<  "Usage: ./convert <literal>" << std::endl;
-        return 1;
-    }
-    ScalarConverter::convert(argv[1]);
-    return 0;
-}
+#include "Base.hpp"
+
+void identify(Base* p);
+void identify(Base& p);
+
+#endif
