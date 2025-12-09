@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpazouki <mpazouki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 09:14:27 by mpazouki          #+#    #+#             */
-/*   Updated: 2025/11/17 09:26:10 by mpazouki         ###   ########.fr       */
+/*   Updated: 2025/11/26 11:52:27 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,9 @@ bool ScalarConverter::isInt(const std::string &s){
 bool ScalarConverter::isFloat(const std::string &s){
     if (s=="nanf" || s=="+inff" || s=="-inff")
        return true;
-    if (s[s.size()-1] != 'f') return false;
+    if (s.back() != 'f' || s.empty() ) return false;
     size_t i = (s[0] == '+' || s[0] == '-') ? 1 : 0;
+    if (i >= s.size() -1) return false;
     bool pointSeen = false;
     for (; i < s.length() - 1; i++){
        if (s[i] == '.'){
@@ -58,6 +59,7 @@ bool ScalarConverter::isDouble(const std::string &s){
     if (s=="nan" || s=="+inf" || s=="-inf")
        return true;
     size_t i = (s[0] == '+' || s[0] == '-') ? 1 : 0;
+    if (i >= s.size() -1) return false;
     bool pointSeen = false;
     for (; i < s.length(); i++){
        if (s[i] == '.'){
@@ -86,6 +88,37 @@ void ScalarConverter::convertFromChar(const std::string &s){
     printDouble(value);
 }
 
+void ScalarConverter::convertFromInt(const std::string &s) {
+    /* 
+     => Parses the string to double using strtod()
+    end is a pointer that tells you where the parsing stopped. 
+    -strtod tries to convert the beginning of the string into a number.
+    -When it can no longer read a valid number, it stops.
+    -end points to the first character that was NOT part of the number.*/
+    char *end;
+    double value = std::strtod(s.c_str(), &end);
+
+    if (*end != '\0' || value > std::numeric_limits<int>::max() ||
+        value < std::numeric_limits<int>::min())
+    {
+        std::cout << "char: impossible\n";
+        std::cout << "int: impossible\n";
+        
+    }    
+    else 
+        {
+            printChar(value);
+            printInt(value);
+        }      
+    printFloat(value);
+    printDouble(value);
+}
+
+
+
+/* 
+
+
 void ScalarConverter::convertFromInt(const std::string &s){
     int i = std::atoi(s.c_str());
     double value = static_cast<double>(i);
@@ -93,7 +126,7 @@ void ScalarConverter::convertFromInt(const std::string &s){
     printInt(value);
     printFloat(value);
     printDouble(value);
-}
+} */
 
 void ScalarConverter::convertFromFloat(const std::string &s){
     float f = std::strtof(s.c_str(), NULL);
@@ -145,21 +178,36 @@ void ScalarConverter::printInt(double value) {
 }
 
 void ScalarConverter::printFloat(double value) {
-    float f = static_cast<float>(value);
-    std::cout << std::fixed << std::setprecision(1);
-    std::cout << "float: " << f << "f" << std::endl;
+    std::cout << "float: ";
+    if (std::isnan(value) || value > std::numeric_limits<float>::max() || value < -3.40282e+38)
+        std::cout << "impossible" << std::endl;
+    else 
+    {
+        float f = static_cast<float>(value);
+        std::cout << std::fixed << std::setprecision(1);
+        std::cout << f << "f" << std::endl;
+    }
 }
 
 void ScalarConverter::printDouble(double value) {
-    std::cout << std::fixed << std::setprecision(1);
-    std::cout << "double: " << value << std::endl;
+    std::cout << "double: ";
+    if (std::isnan(value) || value > std::numeric_limits<double>::max() || value < -1.79769e+308)
+        std::cout << "impossible" << std::endl;
+    else 
+    {
+        double f = static_cast<double>(value);
+        std::cout << std::fixed << std::setprecision(1);
+        std::cout << f << std::endl;
+    }
 }
 
 // ─────────────────────────────────────────────
 //  Main conversion entry point
 // ─────────────────────────────────────────────
 void ScalarConverter::convert(const std::string &literal) {
-    if (isChar(literal))
+    if (isPseudoLiteral(literal))
+        handlePseudoLiteral(literal);
+    else if (isChar(literal))
         convertFromChar(literal);
     else if (isInt(literal))
         convertFromInt(literal);
@@ -167,8 +215,6 @@ void ScalarConverter::convert(const std::string &literal) {
         convertFromFloat(literal);
     else if (isDouble(literal))
         convertFromDouble(literal);
-    else if (isPseudoLiteral(literal))
-        handlePseudoLiteral(literal);
     else
         std::cout << "Error: invalid literal" << std::endl;
 }

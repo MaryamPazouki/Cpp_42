@@ -6,17 +6,20 @@
 /*   By: mpazouki <mpazouki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 14:26:04 by mpazouki          #+#    #+#             */
-/*   Updated: 2025/11/19 14:58:20 by mpazouki         ###   ########.fr       */
+/*   Updated: 2025/11/27 16:05:01 by mpazouki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ARRAY_HPP
 #define ARRAY_HPP
 
+#include <stdexcept>
+#include <iostream>
+
 template <typename T>
 class Array{
     private:
-        T* data;
+        T* _data;
         unsigned int _size;
     public:
         Array();
