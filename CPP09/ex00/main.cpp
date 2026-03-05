@@ -1,4 +1,4 @@
-#include "BitciionExchange.hpp"
+#include "BitcoinExchange.hpp"
 #include <iostream>
 
 int main (int argc, char **argv)
