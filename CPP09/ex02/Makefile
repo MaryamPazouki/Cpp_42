@@ -1,27 +1,25 @@
 NAME = PmergeMe
 
+SRC = main.cpp \
+	  PmergeMe.cpp \
+      PmergeMe_utils.cpp \
+      PmergeMe_vector.cpp \
+      PmergeMe_deque.cpp
+
+OBJ = $(SRC:.cpp=.o)
+
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
-
-SRCS = 	main.cpp \
-		RPN.cpp
-
-OBJS = ${SRCS:.cpp=.o}
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
-
-%.o: %.cpp BitcoinExchange.hpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+$(NAME): $(OBJ)
+	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJ)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
-.PHONY: all clean fclean re

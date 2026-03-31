@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpazouki <mpazouki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 12:00:17 by mpazouki          #+#    #+#             */
-/*   Updated: 2025/11/05 12:00:18 by mpazouki         ###   ########.fr       */
+/*   Updated: 2026/03/17 11:14:54 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class Bureaucrat{
         void incrementGrade();
         void decrementGrade();
 
-        // Exceptions
+        // Exceptions/ nested Exception classes:
         class GradeTooHighException : public std::exception {
             public:
                 const char* what() const throw();
@@ -46,7 +46,7 @@ class Bureaucrat{
         };
 };
 
-// Operator overload
+// Operator overload: non-member function
 std::ostream & operator<<(std::ostream &out, const Bureaucrat &b);
 
 

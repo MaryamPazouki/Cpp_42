@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpazouki <mpazouki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 12:00:07 by mpazouki          #+#    #+#             */
-/*   Updated: 2025/11/05 12:00:08 by mpazouki         ###   ########.fr       */
+/*   Updated: 2026/03/17 11:19:09 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ Bureaucrat::~Bureaucrat(){
    std::cout << "Bureaucrat " << this->_name << " destroyed!" << std::endl;
  }
 
- 
+// crement-functions
 void Bureaucrat::incrementGrade(void){
    if (_grade <=1)
       throw GradeTooHighException();
@@ -57,7 +57,8 @@ void Bureaucrat::decrementGrade(void){
    _grade++;
 }
 
-// Exception messages
+// Exception messages: This what() function belongs to the class
+// GradeTooHighException, which itself belongs to Bureaucrat.
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
    return "Grade too high!";
 }
