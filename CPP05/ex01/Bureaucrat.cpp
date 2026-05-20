@@ -6,7 +6,7 @@
 /*   By: mpazouki <mpazouki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 12:00:57 by mpazouki          #+#    #+#             */
-/*   Updated: 2025/11/05 12:00:58 by mpazouki         ###   ########.fr       */
+/*   Updated: 2026/05/20 09:27:59 by mpazouki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "Form.hpp"
 
 Bureaucrat::Bureaucrat() : _name("Unnamed"), _grade(151) {
-   std::cout << "Default constructor called" << std::endl;
+   /* std::cout << "Default constructor called" << std::endl; */
 }
 
 Bureaucrat::Bureaucrat(const std::string &name , const int grade)
@@ -33,7 +33,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat &other): _name(other._name),
  
  
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat &other){
-   std::cout << "copy assignment operator called!" << std::endl;
+   /* std::cout << "copy assignment operator called!" << std::endl; */
    if (this != &other)
    {
       this->_grade = other._grade;
@@ -81,6 +81,7 @@ std::ostream & operator<<(std::ostream & out, const Bureaucrat & b) {
    return this->_grade;
  }
 
+ //----------------------- signForm method---------------------
 void Bureaucrat::signForm(Form &f){
    try{
       f.beSigned(*this);

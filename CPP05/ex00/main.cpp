@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mpazouki <mpazouki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/05 12:00:22 by mpazouki          #+#    #+#             */
-/*   Updated: 2026/03/17 10:46:26 by codespace        ###   ########.fr       */
+/*   Created: 2026/05/19 07:45:40 by mpazouki          #+#    #+#             */
+/*   Updated: 2026/05/19 07:45:47 by mpazouki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "Bureaucrat.hpp"
 

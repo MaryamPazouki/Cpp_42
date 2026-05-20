@@ -6,7 +6,7 @@
 /*   By: mpazouki <mpazouki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 12:03:01 by mpazouki          #+#    #+#             */
-/*   Updated: 2025/11/05 12:03:02 by mpazouki         ###   ########.fr       */
+/*   Updated: 2026/05/20 08:46:47 by mpazouki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class AForm
         AForm& operator=(const AForm &other);
         virtual ~AForm();
 
-
+        //  signing and executing methods    
         void beSigned(const Bureaucrat &b);
         void execute(Bureaucrat const & executor) const; // checks, then call executeAction()
 

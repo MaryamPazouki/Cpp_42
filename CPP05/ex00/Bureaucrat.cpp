@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mpazouki <mpazouki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/05 12:00:07 by mpazouki          #+#    #+#             */
-/*   Updated: 2026/03/17 11:19:09 by codespace        ###   ########.fr       */
+/*   Created: 2026/05/16 14:37:54 by mpazouki          #+#    #+#             */
+/*   Updated: 2026/05/16 15:04:14 by mpazouki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
 
 #include "Bureaucrat.hpp"
 
@@ -42,7 +44,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat &other){
  
 
 Bureaucrat::~Bureaucrat(){
-   std::cout << "Bureaucrat " << this->_name << " destroyed!" << std::endl;
+   //std::cout << "Bureaucrat " << this->_name << " destroyed!" << std::endl;
  }
 
 // crement-functions

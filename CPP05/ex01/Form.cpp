@@ -6,7 +6,7 @@
 /*   By: mpazouki <mpazouki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 12:01:07 by mpazouki          #+#    #+#             */
-/*   Updated: 2025/11/05 12:01:08 by mpazouki         ###   ########.fr       */
+/*   Updated: 2026/05/20 09:28:09 by mpazouki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 Form :: Form (std::string const &name, int gradeToSign, int gradeToExecute)
     : _name(name), _isSigned(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute){
-    std::cout << "Default constructor called" << std::endl;
+   /*  std::cout << "Default constructor called" << std::endl; */
     if (gradeToExecute < 1 || gradeToSign < 1)
         throw Form::GradeTooHighException();
     if (gradeToExecute > 150 || gradeToSign > 150)
@@ -41,11 +41,14 @@ Form :: ~Form(void){
     std::cout << "Form " << this->_name << " destroyed!" << std::endl;
 }
 
+//----------------- beSigned method----------------------------------
+
 void Form :: beSigned(const Bureaucrat &b){
     if (b.getGrade() > _gradeToSign)
         throw Form :: GradeTooLowException();
     this->_isSigned = true;
 }
+//------------------Exception messages ------------------------------
 
 // Exception messages
 const char* Form::GradeTooHighException::what() const throw() {
