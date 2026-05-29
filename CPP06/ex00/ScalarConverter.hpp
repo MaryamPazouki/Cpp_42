@@ -6,7 +6,7 @@
 /*   By: mpazouki <mpazouki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 14:24:27 by mpazouki          #+#    #+#             */
-/*   Updated: 2025/11/05 14:43:39 by mpazouki         ###   ########.fr       */
+/*   Updated: 2026/05/27 08:59:49 by mpazouki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,3 +53,9 @@ public:
 };
 
 #endif
+
+
+/* 
+-static because no object state is needed
+-private because they are internal helpers
+-public convert is the only function meant to be called from outside */

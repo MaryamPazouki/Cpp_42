@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mpazouki <mpazouki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/17 09:14:18 by mpazouki          #+#    #+#             */
-/*   Updated: 2025/11/26 11:13:10 by codespace        ###   ########.fr       */
+/*   Created: 2026/05/20 12:20:49 by mpazouki          #+#    #+#             */
+/*   Updated: 2026/05/20 12:20:50 by mpazouki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
 
 #include "ScalarConverter.hpp"
 #include <limits>

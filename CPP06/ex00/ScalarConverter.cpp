@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mpazouki <mpazouki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 09:14:27 by mpazouki          #+#    #+#             */
-/*   Updated: 2025/11/26 11:52:27 by codespace        ###   ########.fr       */
+/*   Updated: 2026/05/27 10:34:06 by mpazouki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,11 @@ bool ScalarConverter::isChar(const std::string &s){
 }
 
 bool ScalarConverter::isInt(const std::string &s){
+    if (s.empty())
+        return false;
     size_t i = (s[0] == '+' || s[0] == '-') ? 1 : 0;
+    if (i >= s.length())
+        return false;
     for (; i< s.length();i++)
         if (!std::isdigit(s[i])) return false;
     return true;
@@ -42,32 +46,42 @@ bool ScalarConverter::isInt(const std::string &s){
 bool ScalarConverter::isFloat(const std::string &s){
     if (s=="nanf" || s=="+inff" || s=="-inff")
        return true;
-    if (s.back() != 'f' || s.empty() ) return false;
+    if (s.empty() || s[s.size() - 1] != 'f') return false;
     size_t i = (s[0] == '+' || s[0] == '-') ? 1 : 0;
-    if (i >= s.size() -1) return false;
-    bool pointSeen = false;
-    for (; i < s.length() - 1; i++){
-       if (s[i] == '.'){
-           if (pointSeen) return false;
-           pointSeen = true;
-       } else if (!std::isdigit(s[i])) return false;
+    if (i >= s.size() - 2)
+        return false;
+    size_t point = s.find('.', i);
+    // No Dot found, or it's at the start, or it's at the end (before 'f')
+    if (point == std::string::npos || point == i || point == s.size() - 2)
+        return false;
+    for (size_t j = i; j < s.size() - 1; ++j){
+       if (j == point)
+           continue;
+       if (!std::isdigit(s[j]))
+           return false;
     }
-    return pointSeen;
+    return true;
 }
 
 bool ScalarConverter::isDouble(const std::string &s){
     if (s=="nan" || s=="+inf" || s=="-inf")
        return true;
+    if (s.empty())
+        return false;
     size_t i = (s[0] == '+' || s[0] == '-') ? 1 : 0;
-    if (i >= s.size() -1) return false;
-    bool pointSeen = false;
-    for (; i < s.length(); i++){
-       if (s[i] == '.'){
-           if (pointSeen) return false;
-           pointSeen = true;
-       } else if (!std::isdigit(s[i])) return false;
+    if (i >= s.size() - 1)
+        return false;
+    size_t point = s.find('.', i);
+    // No Dot found, or it's at the start, or it's at the end
+    if (point == std::string::npos || point == i || point == s.size() - 1)
+        return false;
+    for (size_t j = i; j < s.size(); ++j){
+       if (j == point)
+           continue;
+       if (!std::isdigit(s[j]))
+           return false;
     }
-    return pointSeen;
+    return true;
 }
 
 bool ScalarConverter::isPseudoLiteral(const std::string &s){
@@ -91,7 +105,7 @@ void ScalarConverter::convertFromChar(const std::string &s){
 void ScalarConverter::convertFromInt(const std::string &s) {
     /* 
      => Parses the string to double using strtod()
-    end is a pointer that tells you where the parsing stopped. 
+    -end is a pointer that tells you where the parsing stopped. 
     -strtod tries to convert the beginning of the string into a number.
     -When it can no longer read a valid number, it stops.
     -end points to the first character that was NOT part of the number.*/
@@ -113,8 +127,6 @@ void ScalarConverter::convertFromInt(const std::string &s) {
     printFloat(value);
     printDouble(value);
 }
-
-
 
 /* 
 
@@ -147,7 +159,7 @@ void ScalarConverter::convertFromDouble(const std::string &s) {
 
 void ScalarConverter::handlePseudoLiteral(const std::string &s) {
     std::string base = s;
-    if (s[s.size() -1] == 'f')
+    if (s == "nanf" || s == "+inff" || s == "-inff")
         base = s.substr(0, s.size() - 1);
     std::cout << "char: impossible\n";
     std::cout << "int: impossible\n";
@@ -161,6 +173,7 @@ void ScalarConverter::handlePseudoLiteral(const std::string &s) {
 
 void ScalarConverter::printChar(double value) {
     std::cout << "char: ";
+    // NaN, out of char range, or non-displayable
     if (std::isnan(value) || value < 0 || value > 127)
         std::cout << "impossible" << std::endl;
     else if (std::isprint(static_cast<int>(value)))
@@ -184,7 +197,7 @@ void ScalarConverter::printFloat(double value) {
     else 
     {
         float f = static_cast<float>(value);
-        std::cout << std::fixed << std::setprecision(1);
+        std::cout << std::fixed << std::setprecision(1); // Always show one decimal place
         std::cout << f << "f" << std::endl;
     }
 }

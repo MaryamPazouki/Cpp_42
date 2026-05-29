@@ -28,4 +28,10 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+test: $(NAME)
+	bash ./test_convert1.sh
+	bash ./test_convert2.sh
+	bash ./test_convert3.sh
+
+.PHONY: all clean fclean re test
+
