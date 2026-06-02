@@ -6,7 +6,7 @@
 /*   By: mpazouki <mpazouki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 14:00:07 by mpazouki          #+#    #+#             */
-/*   Updated: 2025/11/19 14:19:52 by mpazouki         ###   ########.fr       */
+/*   Updated: 2026/06/01 10:41:36 by mpazouki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,14 @@ int main(){
     std::cout << "--- CONST ARRAY ---\n";
     const int constArr[] = {10, 20, 30};
     iter(constArr, 3, printValue<int>);
-    //iter(constArr, 3, increment<int>);
+    // iter(constArr, 3, increment<int>); // This would cause a compilation error
     std::cout << "\n";
     
     return 0;
 }
+
+
+
+/*  project: learn and practice C++ templates and generic programming —
+ both function templates and class templates — including template implementation patterns, 
+ deep copy and assignment semantics, const-correctness, and basic error handling for template types. */

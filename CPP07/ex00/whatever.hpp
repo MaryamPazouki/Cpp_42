@@ -1,6 +1,10 @@
 #ifndef WHATEVER_HPP
 #define WHATEVER_HPP
 
+/*Implement function templates swap, min, max to work with any type 
+(demonstrates basic function templates and const/ref returns).*/
+
+
 template <typename T>
 /*“The function works for ANY data type, 
 as long as the operations inside are supported.”*/
