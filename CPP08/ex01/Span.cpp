@@ -6,7 +6,7 @@
 /*   By: mpazouki <mpazouki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 08:44:45 by mpazouki          #+#    #+#             */
-/*   Updated: 2026/02/10 10:18:17 by mpazouki         ###   ########.fr       */
+/*   Updated: 2026/06/09 09:33:16 by mpazouki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ Span& Span::operator = (const Span& other){
 
 Span::~Span(){};
 
-
+// add a single number to the Span, checking if it exceeds the maximum size.
 void Span::addNumber( int n){
-    if (_data.size() >= _maxSize)
+    if (_data.size() >= _maxSize || n > std::numeric_limits<int>::max() || n < std::numeric_limits<int>::min())
         throw std::exception();
     _data.push_back(n);
 }
@@ -53,6 +53,8 @@ int Span::longestSpan() const {
     return ( max_value - min_value );
     
 }
+
+
 
 int Span::shortestSpan() const{
     if (_data.size() < 2)

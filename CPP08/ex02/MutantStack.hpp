@@ -6,7 +6,7 @@
 /*   By: mpazouki <mpazouki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 10:32:24 by mpazouki          #+#    #+#             */
-/*   Updated: 2026/02/10 13:15:50 by mpazouki         ###   ########.fr       */
+/*   Updated: 2026/06/10 09:18:56 by mpazouki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,9 @@ writing clean template classes
 
 Examples:
 
-std::stack — adapts a container to behave like a LIFO stack
+std::stack — adapts a container to behave like a LIFO stack (ast In, First Out)
 
-std::queue — adapts a container to behave like a FIFO queue
+std::queue — adapts a container to behave like a FIFO queue (First In, First Out)
 
 std::priority_queue — adapts a container to behave like a heap-based priority queue
 
