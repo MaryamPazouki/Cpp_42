@@ -6,6 +6,13 @@
 #include <string>
 
 class BitcoinExchange{
+
+    private:
+        std::map<std::string, double> _rates;
+        bool isValidDate(const std::string &date) const;
+        bool isValidValue(const std::string &value) const;
+        double getRateForDate(const std::string &date) const;
+
     public:
         BitcoinExchange();
         BitcoinExchange(const BitcoinExchange &other);
@@ -14,13 +21,6 @@ class BitcoinExchange{
 
         void loadDatabase(const std::string &filename);
         void processInput(const std::string &filename) const;
-
-    private:
-        std::map<std::string, double> _rates;
-        bool isValidDate(const std::string &date) const;
-        bool isValidValue(const std::string &value) const;
-        double getRateForDate(const std::string &date) const;
-
 };
 
 #endif

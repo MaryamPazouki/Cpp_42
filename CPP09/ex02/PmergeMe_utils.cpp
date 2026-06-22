@@ -6,7 +6,7 @@
 /*   By: mpazouki <mpazouki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 09:52:31 by mpazouki          #+#    #+#             */
-/*   Updated: 2026/03/13 11:05:18 by mpazouki         ###   ########.fr       */
+/*   Updated: 2026/06/17 12:23:23 by mpazouki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,3 +127,11 @@ std::vector<size_t> PmergeMe::buildJacobOrder(size_t m) const
     return order;
 }
 
+/* The effect of Jacobthals order is that:
+Each insertion searches a smaller interval than the previous one
+
+No insertion ever re-searches a large interval
+
+The algorithm stays O(n log n) with the lowest known constant factor
+
+This is why Ford–Johnson is the optimal comparison sort for small n. */

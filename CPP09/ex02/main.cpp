@@ -6,7 +6,7 @@
 /*   By: mpazouki <mpazouki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 09:52:08 by mpazouki          #+#    #+#             */
-/*   Updated: 2026/03/13 09:52:09 by mpazouki         ###   ########.fr       */
+/*   Updated: 2026/06/22 09:55:27 by mpazouki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,3 +35,11 @@ int main(int argc, char** argv) {
 
     return 0;
 }
+
+
+
+/* deque’s advantage is flexibility at both ends, 
+but in this exercise vector is usually the more 
+efficient choice in practice. */
+
+

@@ -13,14 +13,16 @@ int RPN :: evaluate(const std::string &expr){
     std::istringstream iss(expr);
     std::string token;
 
+    /* Each iteration pulls the next space-separated token from the expression string into the token variable. 
+    This is a convenient way to parse whitespace-delimited input from a string. */
     while(iss >> token)
     {
         if (token.size() == 1 && std::isdigit(token[0])){
-            st.push(token[0] - '0'); // invert charactuire into integer
+            st.push(token[0] - '0'); // invert character into integer
         }
         else if (token == "+" || token == "-" || token == "*" || token == "/") {
             if (st.size()<2)
-                throw std::runtime_error("not enough operands!" );
+                throw std::runtime_error("not enough operands!" ); // if there are not enough operands for the operator, throw an error
             
             int b = st.top(); // gives you the value
             st.pop(); //removes it.

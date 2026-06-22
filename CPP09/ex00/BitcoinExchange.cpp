@@ -39,7 +39,7 @@ void BitcoinExchange ::loadDatabase(const std::string &filename)
         std::stringstream ss(line); // Wrap the line in a stringstream so we can extract parts easily.
         std::string date, rateStr;
 
-        // xtract everything before the comma into date.
+        // Extract everything before the comma into date.
         // Extract everything after the comma into rateStr.
 
         if (!std::getline(ss, date, ',') || !std::getline(ss, rateStr))
@@ -50,8 +50,11 @@ void BitcoinExchange ::loadDatabase(const std::string &filename)
             throw std::runtime_error("Error: invalid date in database => " + date);
 
         // Convert the rate string to a double
-        char *end;                                        // end will point to the first invalid character.
+        char *end;                                        
+        // end will point to the first invalid character.
+        //end is an output pointer used by std::strtod to tell you where the number parsing stopped.
         double rate = std::strtod(rateStr.c_str(), &end); // converts a C‑string to a double.
+        // 'end'  ensures the whole string was a valid number, with no extra junk after it.
         if (*end != '\0')
             throw std::runtime_error("Error: invalid rate in database => " + rateStr);
         _rates[date] = rate;
@@ -116,7 +119,7 @@ bool BitcoinExchange ::isValidValue(const std::string &valueStr) const
     if (valueStr[i] == '+' || valueStr[i] == '-')
     {
         i++;
-        if (i == valueStr.size())
+        if (i == valueStr.size()) //(i == 1)
             return false;
     }
 
@@ -152,7 +155,7 @@ double BitcoinExchange ::getRateForDate(const std::string &date) const
     // Find the first element with key >= date
     // keys are strings is lexicographically sortable
     // std::map keeps them in chronological order automatically. always sorted!
-    std::map<std::string, double>::const_iterator it = _rates.lower_bound(date);
+    std::map<std::string, double>::const_iterator it = _rates.lower_bound(date); //returns an iterator to the first element whose key is not less than date (i.e., key >= date). If no such key exists it returns _rates.end().
 
     // Case 1: exact match
     if (it != _rates.end() && it->first == date)
