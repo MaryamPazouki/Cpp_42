@@ -6,7 +6,7 @@
 /*   By: mpazouki <mpazouki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 09:52:08 by mpazouki          #+#    #+#             */
-/*   Updated: 2026/06/22 09:55:27 by mpazouki         ###   ########.fr       */
+/*   Updated: 2026/06/29 11:13:16 by mpazouki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,13 @@ int main(int argc, char** argv) {
     pm.sortVector();
     pm.sortDeque();
 
-    pm.printAfter();
+    pm.printAftervec();
+    pm.printAfterdeq();
     pm.printTimes();
 
     return 0;
 }
+
 
 
 

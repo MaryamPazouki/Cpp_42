@@ -189,7 +189,7 @@ void BitcoinExchange::processInput(const std::string &filename) const
         if (line.empty())
             continue;
         // format: "date | value"
-        size_t pipePos = line.find(',');
+        size_t pipePos = line.find('|');
         if (pipePos == std::string::npos)
         {
             std::cerr << "Error: bad input => " << line << std::endl;

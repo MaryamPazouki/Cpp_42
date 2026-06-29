@@ -6,7 +6,7 @@
 /*   By: mpazouki <mpazouki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 09:52:25 by mpazouki          #+#    #+#             */
-/*   Updated: 2026/03/13 09:52:26 by mpazouki         ###   ########.fr       */
+/*   Updated: 2026/06/29 11:14:22 by mpazouki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,11 @@ public:
     bool parseInput(int argc, char** argv);
 
     void printBefore() const;
-    void printAfter() const;
+    void printAfterdeq() const;
+    void printAftervec() const;
+    
+    void sortVector();
+    void sortDeque();
 
     void sortVector();
     void sortDeque();
