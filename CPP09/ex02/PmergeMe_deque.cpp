@@ -66,6 +66,7 @@ void PmergeMe::fordJohnsonDeque(std::deque<int>& arr) const
     size_t n = arr.size();
     std::deque<int> bigs;
     std::deque<int> smalls;
+    std::deque<int> pairBigs;
 
     /* -------- STEP 1: Handle odd-sized arrays -------- */
     bool hasOdd = (n % 2 != 0);
@@ -81,9 +82,11 @@ void PmergeMe::fordJohnsonDeque(std::deque<int>& arr) const
         if (a < b) {
             smalls.push_back(a);
             bigs.push_back(b);
+            pairBigs.push_back(b);
         } else {
             smalls.push_back(b);
             bigs.push_back(a);
+            pairBigs.push_back(a);
         }
     }
 
@@ -103,7 +106,7 @@ void PmergeMe::fordJohnsonDeque(std::deque<int>& arr) const
             size_t i = order[idx];
 
             int s = smalls[i];
-            int b = bigs[i];
+            int b = pairBigs[i];
 
             // Find upper bound for binary search
             size_t posB = std::lower_bound(mainChain.begin(), mainChain.end(), b)
@@ -115,7 +118,7 @@ void PmergeMe::fordJohnsonDeque(std::deque<int>& arr) const
 
         /* -------- Insert small[0] LAST (required by Ford–Johnson) -------- */
         int s0 = smalls[0];
-        int b0 = bigs[0];
+        int b0 = pairBigs[0];
 
         size_t posB0 = std::lower_bound(mainChain.begin(), mainChain.end(), b0)
                        - mainChain.begin();

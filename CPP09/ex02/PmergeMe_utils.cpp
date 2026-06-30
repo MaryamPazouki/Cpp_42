@@ -6,7 +6,7 @@
 /*   By: mpazouki <mpazouki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 09:52:31 by mpazouki          #+#    #+#             */
-/*   Updated: 2026/06/29 11:15:04 by mpazouki         ###   ########.fr       */
+/*   Updated: 2026/06/30 06:21:32 by mpazouki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void PmergeMe::printBefore() const
 
 void PmergeMe::printAftervec() const
 {
-    std::cout << "After:";
+    std::cout << "After Vector:";
     for (size_t i = 0; i < _vec.size(); ++i)
         std::cout << " " << _vec[i];
     std::cout << std::endl;
@@ -67,7 +67,7 @@ void PmergeMe::printAftervec() const
 
 void PmergeMe::printAfterdeq() const
 {
-    std::cout << "After deq:";
+    std::cout << "After Deque:";
     for (size_t i = 0; i < _deq.size(); ++i)
         std::cout << " " << _deq[i];
     std::cout << std::endl;
